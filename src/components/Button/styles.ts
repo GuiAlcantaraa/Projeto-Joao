@@ -1,17 +1,15 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
-  width: 100%;
-  padding: 9px;
+  background-color: #35AAFF;
+  width: 90%;
+  height: 45px;
   align-items: center;
   justify-content: center;
-  background-color: #DC1637;
-  margin-bottom: 8px;
-  flex-direction: row;
+  border-radius: 7px;
 `;
 
 export const Title = styled.Text`
-  font-size: 15px;
-  color: #FFFFFF;
-  margin-left: 7px;
+  color: #FFF;
+  font-size: 18px;
 `;

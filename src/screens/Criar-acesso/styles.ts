@@ -20,11 +20,12 @@ export const Title = styled.Text`
 
 
 export const Input = styled.TextInput `
-  width: 100%;
-  height: 40;
   background-color: white;
-  border-radius: 4px;
-  padding-left: 10px;
-  margin-bottom: 10px;
+  width: 90%;
+  margin-bottom: 15px;
+  color: #222;
+  border-radius: 7px;
+  font-size: 17px;
+  padding: 10px;
 
 `

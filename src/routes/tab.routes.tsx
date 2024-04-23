@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import { Home } from '../screens/Home'
 import { Grupos } from '../screens/grupos';
+import { SignIn } from '../screens/SignIn';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
@@ -16,19 +17,20 @@ export function TabsRoutes() {
             screenOptions={{
                 tabBarActiveTintColor: '#9A1032',
                 tabBarInactiveTintColor: '#696761',
-                tabBarStyle: {backgroundColor: '#FBF1CD'},
+                tabBarStyle: {backgroundColor: '#191919'},
                 headerShown: false,
             }}
         >
+
             <Screen
-                name="home"
+                name="Home"
                 component={Home}
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
                         <MaterialIcons
                             name="home"
-                            color={'black'}
+                            color={'white'}
                             size={40}
                         />
                     )
@@ -44,7 +46,7 @@ export function TabsRoutes() {
                     tabBarIcon: ({ color, size }) => (
                         <MaterialIcons
                             name="group"
-                            color={'black'}
+                            color={'white'}
                             size={40}
                         />
                     )

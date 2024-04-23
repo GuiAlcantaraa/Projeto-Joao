@@ -2,15 +2,21 @@ import { useNavigation } from "@react-navigation/native";
 import { ReactNode, createContext, useState } from "react";
 import api from "../services/api";
 
-interface IUser {
+interface IUserCredentials {
     email: string,
     password: string,
 }
 
+interface IUserResponse {
+    id: string,
+    name: string,
+    email: string,
+}
+
 interface IAuthContextData {
-    user: IUser | null;
+    user: IUserResponse | null;
     signed: boolean;
-    handleSignin(credentials: IUser): Promise<void>;
+    handleSignin(credentials: IUserCredentials): Promise<void>;
     handleSignOut(): void;
 }
 
@@ -22,40 +28,45 @@ export const AuthContext = createContext({} as IAuthContextData);
 
 export const AuthProvider = ({children}: AuthProviderProps) =>{
 
-    const [user, setUser] = useState<IUser | null>(null)
+    const [user, setUser] = useState<IUserResponse | null>(null)
+    const [signed, setSigned] = useState<boolean>(false)
     const navigation = useNavigation()
 
 
-    async function handleSignin({email, password}: IUser){
+    async function handleSignin({email, password}: IUserCredentials){
         
-
         const { data } = await api.get('usuario',{
             params:{
                 email,
                 password
             }
         })
-    
-        if(!data[0]){
-            alert("Usuario invalido.")
+
+        const user = data[0];
+
+        console.log("User", user)
+
+        if(!user){
+            alert("Usuario invalido");
             setUser(null)
+            setSigned(false)
             return;
         }
 
         setUser(user)
-        navigation.navigate('Home')
+        setSigned(true)
+
+        navigation.navigate("Home");
     }
 
     function handleSignOut() {
-        sessionStorage.clear();
+        setSigned(false)
         setUser(null);
-
-        return navigation.navigate('Login')
     }
 
     return (
         <AuthContext.Provider
-            value={{ handleSignin, signed: !!user, user, handleSignOut }}
+            value={{ handleSignin, signed, user, handleSignOut }}
         >
             {children}
         </AuthContext.Provider>

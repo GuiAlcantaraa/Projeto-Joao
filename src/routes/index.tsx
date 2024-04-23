@@ -1,17 +1,25 @@
 import React, { useContext } from 'react';
-import { NavigationContainer, TabRouter } from '@react-navigation/native';
-import { GuestRoutes } from './guest.routes';
+import { NavigationContainer } from '@react-navigation/native';
 import { AuthContext, AuthProvider } from '../context/auth';
 import { TabsRoutes } from './tab.routes';
-import { PrivateRoutes } from './private.routes';
+import { GuestRoutes } from './guest.routes';
+
+
+function AuthStack(){
+    const { signed } = useContext(AuthContext)
+
+    const routes = signed ? <TabsRoutes /> :  <GuestRoutes />
+
+    return routes;
+}
+
 
 
 export function Routes() {
-
     return (
             <NavigationContainer>
                <AuthProvider>
-                    <PrivateRoutes />
+                    <AuthStack />
                 </AuthProvider>
             </NavigationContainer>
     )

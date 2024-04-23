@@ -1,19 +1,20 @@
-import { useContext, useEffect } from 'react'
-import { Container, TextHome } from './styles'
+import { useContext } from 'react'
+import { Container, Button, Title } from './styles'
 import { AuthContext } from '../../context/auth'
+import { User } from '../../components/User'
 
 
 export function Home() {
+    const { handleSignOut } = useContext(AuthContext)
 
-    const { user } = useContext(AuthContext)
-
-    useEffect(() => (
-        console.log("USUARIO", user)
-    ),[])
 
     return (
         <Container>
-            <TextHome>Bem vindo(a)! ao app, {user?.username}</TextHome>
+            <User />
+
+           <Button onPress={handleSignOut}>
+                 <Title>Sair</Title>
+           </Button>
         </Container>
 
     )

@@ -1,19 +1,31 @@
-import React, { useContext, useState } from 'react';
-import { Container, Input, Title } from './styles';
-import { Button } from '../../components/Button';
+import React, { useContext, useEffect, useState } from 'react';
+import { ButtonCreate, 
+  ButtonSubmit, 
+  Container, 
+  ContainerInput, 
+  Input, 
+  InputPassword, 
+  IpuntArea, 
+  TextCreate, 
+  TextSubmit, 
+  ViewImage } from './styles';
 import { AuthContext } from '../../context/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Image, Animated, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'
+
 
 
 export function SignIn() {
-const navigation = useNavigation()
   const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const navigation = useNavigation()
   const { handleSignin } = useContext(AuthContext)
 
+ 
   async function handleSign() {
-
+    
     const credentials = {
       email,
       password
@@ -27,37 +39,39 @@ const navigation = useNavigation()
 
   return (
     <Container>
-          <Title>Bem-vindo(a)</Title>
-            
-            <Input 
-              placeholder='Email'
-              value={email}
-              onChangeText={setUsername}
+        <ViewImage>
+            <Image 
+              source={require('../../../src/assets/logo.png')}
             />
+        </ViewImage>
+
+        <ContainerInput>
+          <Input 
+                placeholder='Email'
+                autoCorrect={false}
+                value={email}
+                onChangeText={setUsername}
+              />
 
             <Input 
-              placeholder='Senha'
-              value={password}
-              onChangeText={setPassword}
-            />
-
+                placeholder='Senha'
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={true}
+              />
           
-            <Button
-              title="Acessar"
-              onPress={handleSign}
-              />
+        
+        <ButtonSubmit onPress={handleSign}>
+           <TextSubmit>Acessar</TextSubmit>
+        </ButtonSubmit>
 
+        <ButtonCreate onPress={handleCreateSign}>
+           <TextCreate>Criar conta</TextCreate>
+        </ButtonCreate>
 
-            <Button
-              title="Criar acesso"
-              onPress={handleCreateSign}
-              />
+      </ContainerInput>
 
-              {/* <Button
-                icon="google"
-                title="Entrar com Google"
-                onPress={handleSign}
-              /> */}
+        
    </Container >
   );
 }
