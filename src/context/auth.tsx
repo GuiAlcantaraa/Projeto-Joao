@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { ReactNode, createContext, useState } from "react";
+import api from "../services/api";
 
 interface IUser {
-    username: string,
+    email: string,
     password: string,
 }
 
@@ -25,22 +26,24 @@ export const AuthProvider = ({children}: AuthProviderProps) =>{
     const navigation = useNavigation()
 
 
-    async function handleSignin({username, password}: IUser){
-        const userNameFake = 'baxolis'
-        const passwordFake = '123'
+    async function handleSignin({email, password}: IUser){
+        
 
-        if(userNameFake === username && passwordFake === password){
-            const user = {
-               username,
-            password
+        const { data } = await api.get('usuario',{
+            params:{
+                email,
+                password
             }
-            setUser(user)
-            navigation.navigate('Home')
-        }
-        else {
+        })
+    
+        if(!data[0]){
+            alert("Usuario invalido.")
             setUser(null)
+            return;
         }
 
+        setUser(user)
+        navigation.navigate('Home')
     }
 
     function handleSignOut() {

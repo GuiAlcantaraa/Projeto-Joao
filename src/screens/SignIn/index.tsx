@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export function SignIn() {
 const navigation = useNavigation()
-  const [username, setUsername] = useState('')
+  const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const { handleSignin } = useContext(AuthContext)
@@ -15,7 +15,7 @@ const navigation = useNavigation()
   async function handleSign() {
 
     const credentials = {
-      username,
+      email,
       password
     }
     await handleSignin(credentials)
@@ -30,8 +30,8 @@ const navigation = useNavigation()
           <Title>Bem-vindo(a)</Title>
             
             <Input 
-              placeholder='seu username'
-              value={username}
+              placeholder='Email'
+              value={email}
               onChangeText={setUsername}
             />
 
