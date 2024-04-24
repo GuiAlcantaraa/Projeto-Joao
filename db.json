@@ -24,9 +24,72 @@
       "email": "guinhazul@gmail.com",
       "password": "123"
     }
+  ],
+  "grupos": [
+    {
+      "id": "49d5",
+      "nome": "grupo doido",
+      "descricao": "somente doido",
+      "valor": "100",
+      "dataRevelacao": "23/04/2024"
+    },
+    {
+      "id": "33e4",
+      "nome": "Teste",
+      "descricao": "grupo de teste",
+      "valor": "100",
+      "dataRevelacao": "23/04/2024",
+      "status": 1,
+      "imagem": ""
+    },
+    {
+      "id": "9cff",
+      "nome": "Cszin",
+      "descricao": "grupo de cs",
+      "valor": "10",
+      "dataRevelacao": "23/04/2024",
+      "status": 1,
+      "imagem": ""
+    }
+  ],
+  "gruposUsuarios": [
+    {
+      "id": "232a",
+      "idUsuario": "1",
+        "grupos": [
+          {
+            "nome": "Teste final",
+            "descricao": "aa",
+            "valor": "100",
+            "dataRevelacao": "23/04/2024",
+            "status": 1,
+            "imagem": ""
+          },
+          {
+            "nome": "Teste final 2",
+            "descricao": "aa",
+            "valor": "100",
+            "dataRevelacao": "23/04/2024",
+            "status": 1,
+            "imagem": ""
+          },
+          {
+            "nome": "Teste final 3",
+            "descricao": "aa",
+            "valor": "100",
+            "dataRevelacao": "23/04/2024",
+            "status": 1,
+            "imagem": ""
+          },
+          {
+            "nome": "Teste final 4",
+            "descricao": "aa",
+            "valor": "100",
+            "dataRevelacao": "23/04/2024",
+            "status": 1,
+            "imagem": ""
+          }
+        ]
+    }
   ]
-
-
-
-  
 }

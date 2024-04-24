@@ -5,6 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { Home } from '../screens/Home'
 import { Grupos } from '../screens/grupos';
 import { SignIn } from '../screens/SignIn';
+import { CreateGroup } from '../screens/Criar-grupo';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ export function TabsRoutes() {
                         <MaterialIcons
                             name="home"
                             color={'white'}
-                            size={40}
+                            size={30}
                         />
                     )
                 }}
@@ -47,7 +48,22 @@ export function TabsRoutes() {
                         <MaterialIcons
                             name="group"
                             color={'white'}
-                            size={40}
+                            size={30}
+                        />
+                    )
+                }}
+            />
+
+            <Screen
+                name="CriarGrupo"
+                component={CreateGroup}
+                options={{
+                    tabBarLabel: 'Criar grupo',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons
+                            name="group-add"
+                            color={'white'}
+                            size={30}
                         />
                     )
                 }}

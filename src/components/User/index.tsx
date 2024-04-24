@@ -9,7 +9,7 @@ export function User() {
   return (
     <Container>
       <Photo
-        source={{ uri: "https://github.com/GuiAlcantaraa.png" }}
+        source={{ uri: "https://github.com/JoaoPedro6017.png" }}
       />
 
       <Name>{user?.name} </Name>

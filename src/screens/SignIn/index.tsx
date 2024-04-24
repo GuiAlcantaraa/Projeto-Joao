@@ -26,6 +26,11 @@ export function SignIn() {
  
   async function handleSign() {
     
+    if(email === "" || password === ""){
+      alert("Informe os dados para prosseguir.")
+      return;
+    }
+
     const credentials = {
       email,
       password
