@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { Container, Input, Title } from './styles';
+import React, { useState } from 'react';
+import { ButtonVoltar, Container, ContainerImage, Input, Photo, TextVoltar } from './styles';
 import { Button } from '../../components/Button';
-import { AuthContext } from '../../context/auth';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
-
+import { MaterialIcons } from '@expo/vector-icons'
+import * as ImagePicker from 'expo-image-picker';
 
 export function CreateSign() {
 
@@ -12,6 +12,7 @@ export function CreateSign() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [image, setImage] = useState('')
 
   const navigation = useNavigation()
 
@@ -32,7 +33,8 @@ export function CreateSign() {
     const create = await api.post('usuario', {
       name,
       email,
-      password
+      password,
+      image
     })
 
 
@@ -42,10 +44,29 @@ export function CreateSign() {
     }
   }
 
+  async function pickImage() {
+    let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+    });
+
+    if (!result.canceled) {
+         console.log('imageeee', result.assets[0].uri)
+         setImage(result.assets[0].uri);
+    }
+}
+
   return (
     <Container>
-          <Title>Criação de usuario</Title>
-            
+          
+          <ContainerImage>
+          {image ? <Photo source={{ uri: image }}/> : (
+            <MaterialIcons name="add-a-photo" size={50} color="white" onPress={pickImage}/>
+            )}
+          </ContainerImage>
+         
 
           <Input 
               placeholder='Nome completo'
@@ -75,8 +96,12 @@ export function CreateSign() {
             <Button
               title="Criar"
               onPress={handleCreateSign}
-              />
+            />
 
+            <ButtonVoltar onPress={() => navigation.goBack()}>
+                <TextVoltar>Voltar</TextVoltar>
+            </ButtonVoltar> 
+             
    </Container >
   );
 }

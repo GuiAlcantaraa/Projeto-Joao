@@ -29,3 +29,46 @@ export const Input = styled.TextInput `
   padding: 10px;
 
 `
+export const ButtonVoltar = styled.TouchableOpacity`
+    margin-top: 10px;
+`
+
+
+export const TextVoltar = styled.Text`
+  color: #FFF;
+
+`
+
+
+export const ViewImage = styled.View`
+  width: 100%;
+  align-items: center;
+  margin-top: 60px;
+  background-color: white;
+
+`
+export const BtnAddFoto = styled.TouchableOpacity`
+
+
+`
+
+export const Photo = styled.Image`
+  width: 180px;
+  height: 180px;
+  border-radius: 200px;
+`;
+
+
+
+export const ContainerImage = styled.View`
+     margin-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 80px;
+    width: 150px;
+    height: 150px;
+    background-color: gray !important;
+`;

@@ -16,7 +16,7 @@ export const Card = styled.TouchableOpacity`
   text-decoration: none;
 `
 
-export const Title = styled.View`
+export const Title = styled.Text`
   color: #ffff;
   text-align: center;
 `

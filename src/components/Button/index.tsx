@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import { Container, Title } from './styles';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props extends TouchableOpacityProps {
   title: string;

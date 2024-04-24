@@ -14,11 +14,18 @@ interface IGroups {
     dataRevelacao: string,
 }
 
+interface IGroupResponse {
+    grupo: IGroups,
+    id: string,
+    idUsuario: string
+
+}
+
 
 export function Grupos() {
 
     const { user } = useContext(AuthContext)
-    const [ groups, setGroups ] = useState<IGroups[]>()
+    const [ groups, setGroups ] = useState<IGroupResponse[]>()
 
     async function getGroupsById(){
         const { data } = await api.get('gruposUsuarios',{
@@ -26,9 +33,9 @@ export function Grupos() {
                 idUsuario: user?.id
             }
         })
-        console.log("resposta", data[0].grupos)
+        console.log("resposta", data)
 
-        setGroups(data[0].grupos)
+        setGroups(data)
     }
 
     useEffect(() => {
@@ -47,7 +54,9 @@ export function Grupos() {
                      return (
                            <GroupCard 
                                 key={group.id} 
-                                data={group} />
+                                data={group} 
+                            />
+                                
                         )
                     })}
            

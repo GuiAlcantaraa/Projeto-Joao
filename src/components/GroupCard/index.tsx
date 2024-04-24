@@ -17,20 +17,29 @@ interface IGroups {
     dataRevelacao: string,
 }
 
+interface IGroupData {
+    grupo: IGroups,
+    id: string,
+    idUsuario: string
+
+}
 
 interface GroupCardProps extends TouchableOpacityProps {
-    data: IGroups
+    data: IGroupData
+    
 }
 
 
 
-export function GroupCard({ data, ...props }: GroupCardProps) {
-    const navigation = useNavigation();
+export function GroupCard({ data, ...rest }: GroupCardProps) {
+
+    const navigation = useNavigation()
+
     return (
-        <Card {...props}>
+        <Card {...rest} onPress={() => {navigation.navigate("DetailsGroup"), { params: data }}}>
             <StyledImage source={require('../../assets/logo.png')} />
             <Title>
-                {data.nome}
+                {data.grupo.nome}
             </Title>
         </Card>
     )

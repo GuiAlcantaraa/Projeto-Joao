@@ -4,7 +4,6 @@ import { Animated } from 'react-native';
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
-  background-color: #F4F5F6;
   justify-content: center;
   align-items: center;
   background-color: #191919;
@@ -13,7 +12,6 @@ export const Container = styled.KeyboardAvoidingView`
 export const ViewImage = styled.View`
   flex: 1;
   justify-content: center;
-  
   `
 
 export const ContainerInput = styled(Animated.View)`
